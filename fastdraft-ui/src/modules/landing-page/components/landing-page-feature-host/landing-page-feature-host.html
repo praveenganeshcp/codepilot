@@ -1,0 +1,22 @@
+<app-landing-page-header
+      [user]="user()"
+      (loginClicked)="login()"
+    />
+
+    <app-landing-page-banner
+      title="FastDraft"
+      caption="Turn Specs to PRs in minutes"
+    />
+
+    <section class="features">
+      @for (feature of features(); track feature.title) {
+        <app-landing-page-feature-card
+          [title]="feature.title"
+          [description]="feature.description"
+        />
+      }
+    </section>
+
+    <footer>
+        <h3>Crafted with ❤️ at SpotDraft</h3>
+    </footer>

@@ -22,7 +22,8 @@ export class HelloWorldPanel {
         vscode.ViewColumn.One,
         {
           enableScripts: true,
-          localResourceRoots: [vscode.Uri.joinPath(extensionUri, 'fastdraft-ui/dist/fastdraft-ui/browser')]
+          localResourceRoots: [vscode.Uri.joinPath(extensionUri, 'fastdraft-ui/dist/fastdraft-ui/browser')],
+          retainContextWhenHidden: true
         }
       );
       HelloWorldPanel.currentPanel = new HelloWorldPanel(panel, extensionUri);
