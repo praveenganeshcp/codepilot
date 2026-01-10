@@ -8,9 +8,8 @@ describe('TaskDescription', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TaskDescription]
-    })
-    .compileComponents();
+      imports: [TaskDescription],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TaskDescription);
     component = fixture.componentInstance;

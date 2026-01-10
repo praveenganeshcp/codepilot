@@ -7,7 +7,7 @@ import { Component, computed, input, output } from '@angular/core';
   styleUrl: './landing-page-header.scss',
 })
 export class LandingPageHeader {
-user = input<{ name: string } | null>();
+  user = input<{ name: string } | null>();
   loginClicked = output<void>();
 
   isLoggedIn = computed(() => !!this.user());

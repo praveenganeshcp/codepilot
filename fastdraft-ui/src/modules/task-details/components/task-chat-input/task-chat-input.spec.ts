@@ -8,9 +8,8 @@ describe('TaskChatInput', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TaskChatInput]
-    })
-    .compileComponents();
+      imports: [TaskChatInput],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TaskChatInput);
     component = fixture.componentInstance;

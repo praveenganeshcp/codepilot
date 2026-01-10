@@ -8,9 +8,8 @@ describe('TaskChatWindow', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TaskChatWindow]
-    })
-    .compileComponents();
+      imports: [TaskChatWindow],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TaskChatWindow);
     component = fixture.componentInstance;

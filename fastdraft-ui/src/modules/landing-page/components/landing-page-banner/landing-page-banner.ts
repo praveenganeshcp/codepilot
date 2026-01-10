@@ -7,6 +7,6 @@ import { Component, input } from '@angular/core';
   styleUrl: './landing-page-banner.scss',
 })
 export class LandingPageBanner {
-title = input.required<string>();
+  title = input.required<string>();
   caption = input.required<string>();
 }

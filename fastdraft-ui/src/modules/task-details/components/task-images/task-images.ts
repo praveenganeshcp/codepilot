@@ -8,5 +8,4 @@ import { Component, input } from '@angular/core';
 })
 export class TaskImages {
   images = input.required<{ id: string; src: string; caption?: string }[]>();
-
 }

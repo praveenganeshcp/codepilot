@@ -1,10 +1,11 @@
 <header class="header">
-      <button class="back">←</button>
+  <button class="back">←</button>
 
-      <h1>{{ title() }}</h1>
+  <h1>{{ title() }}</h1>
 
-      <div class="actions">
-        <button (click)="edit.emit()">✎</button>
-        <button (click)="remove.emit()">🗑</button>
-        <button class="primary" (click)="start.emit()">▶ Start</button>
-      </div>
+  <div class="actions">
+    <button (click)="edit.emit()">✎</button>
+    <button (click)="remove.emit()">🗑</button>
+    <button class="primary" (click)="start.emit()">▶ Start</button>
+  </div>
+</header>

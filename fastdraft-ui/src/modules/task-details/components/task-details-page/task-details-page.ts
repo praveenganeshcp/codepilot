@@ -6,22 +6,18 @@ import { TaskChatWindow } from '../task-chat-window/task-chat-window';
 
 @Component({
   selector: 'app-task-details-page',
-  imports: [
-    TaskHeader,
-    TaskSpecPane,
-    TaskChatWindow
-  ],
+  imports: [TaskHeader, TaskSpecPane, TaskChatWindow],
   templateUrl: './task-details-page.html',
   styleUrl: './task-details-page.scss',
 })
 export class TaskDetailsPage {
-task = signal<Task>({
+  task = signal<Task>({
     id: '1',
     title: 'Investigate API failure',
     spec: {
       description: 'Analyze logs and determine why API requests fail intermittently.',
       images: [],
-      tables: []
-    }
+      tables: [],
+    },
   });
 }

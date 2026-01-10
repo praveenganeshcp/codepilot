@@ -1,11 +1,11 @@
 <header class="header">
-      <div class="logo">FastDraft</div>
+  <div class="logo">FastDraft</div>
 
-      <div class="auth">
-        @if (isLoggedIn()) {
-          <span class="welcome">Hello {{ user()!.name }}!</span>
-        } @else {
-          <button class="login-btn" (click)="loginClicked.emit()">Login</button>
-        }
-      </div>
+  <div class="auth">
+    @if (isLoggedIn()) {
+      <span class="welcome">Hello {{ user()!.name }}!</span>
+    } @else {
+      <button class="login-btn" (click)="loginClicked.emit()">Login</button>
+    }
+  </div>
 </header>

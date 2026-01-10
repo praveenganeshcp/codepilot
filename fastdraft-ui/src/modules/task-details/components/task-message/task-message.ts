@@ -7,6 +7,6 @@ import { Component, input } from '@angular/core';
   styleUrl: './task-message.scss',
 })
 export class TaskMessage {
-role = input<'user' | 'agent'>();
+  role = input<'user' | 'agent'>();
   text = input<string>();
 }

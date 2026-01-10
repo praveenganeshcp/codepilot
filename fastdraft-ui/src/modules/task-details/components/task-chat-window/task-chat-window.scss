@@ -1,2 +1,10 @@
-.chat { display: flex; flex-direction: column; height: 100%; }
-    .messages { flex: 1; overflow: auto; padding: 16px; }
+.chat {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.messages {
+  flex: 1;
+  overflow: auto;
+  padding: 16px;
+}

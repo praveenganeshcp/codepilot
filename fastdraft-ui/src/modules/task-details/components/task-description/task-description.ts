@@ -7,5 +7,5 @@ import { Component, input } from '@angular/core';
   styleUrl: './task-description.scss',
 })
 export class TaskDescription {
-text = input.required<string>();
+  text = input.required<string>();
 }

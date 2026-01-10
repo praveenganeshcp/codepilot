@@ -7,6 +7,6 @@ import { Component, input } from '@angular/core';
   styleUrl: './landing-page-feature-card.scss',
 })
 export class LandingPageFeatureCard {
-title = input.required<string>();
+  title = input.required<string>();
   description = input.required<string>();
 }

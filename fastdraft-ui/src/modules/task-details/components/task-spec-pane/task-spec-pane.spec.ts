@@ -8,9 +8,8 @@ describe('TaskSpecPane', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TaskSpecPane]
-    })
-    .compileComponents();
+      imports: [TaskSpecPane],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(TaskSpecPane);
     component = fixture.componentInstance;

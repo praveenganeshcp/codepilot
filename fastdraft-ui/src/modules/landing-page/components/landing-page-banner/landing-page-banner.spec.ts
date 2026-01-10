@@ -8,9 +8,8 @@ describe('LandingPageBanner', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [LandingPageBanner]
-    })
-    .compileComponents();
+      imports: [LandingPageBanner],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(LandingPageBanner);
     component = fixture.componentInstance;

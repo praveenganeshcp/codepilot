@@ -1,8 +1,10 @@
 <div class="images">
-      @for (img of images(); track img.id) {
-        <figure>
-          <img [src]="img.src" />
-          @if (img.caption) { <figcaption>{{ img.caption }}</figcaption> }
-        </figure>
+  @for (img of images(); track img.id) {
+    <figure>
+      <img [src]="img.src" />
+      @if (img.caption) {
+        <figcaption>{{ img.caption }}</figcaption>
       }
-    </div>
+    </figure>
+  }
+</div>

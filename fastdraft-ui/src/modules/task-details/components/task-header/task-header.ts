@@ -7,7 +7,7 @@ import { Component, input, output } from '@angular/core';
   styleUrl: './task-header.scss',
 })
 export class TaskHeader {
-title = input.required<string>();
+  title = input.required<string>();
   edit = output<void>();
   remove = output<void>();
   start = output<void>();

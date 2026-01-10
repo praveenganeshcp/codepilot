@@ -7,6 +7,8 @@ import { Component, output } from '@angular/core';
   styleUrl: './task-chat-input.scss',
 })
 export class TaskChatInput {
-send = output<string>();
-  submit(v: string) { this.send.emit(v); }
+  send = output<string>();
+  submit(v: string) {
+    this.send.emit(v);
+  }
 }
