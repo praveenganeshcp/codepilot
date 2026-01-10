@@ -1,10 +1,9 @@
 import { Routes } from '@angular/router';
+import { LandingPageFeatureHost } from '../landing-page/components/landing-page-feature-host/landing-page-feature-host';
 
 export const routes: Routes = [
     {
         path: "",
-        loadComponent: () => import("../landing-page/components/landing-page-feature-host/landing-page-feature-host").then(
-            c => c.LandingPageFeatureHost
-        )
+        component: LandingPageFeatureHost
     }
 ];
