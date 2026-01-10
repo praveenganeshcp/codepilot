@@ -1,7 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { LandingPageBanner } from '../landing-page-banner/landing-page-banner';
 import { LandingPageFeatureCard } from '../landing-page-feature-card/landing-page-feature-card';
 import { LandingPageHeader } from '../landing-page-header/landing-page-header';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-landing-page-feature-host',
@@ -14,7 +15,9 @@ import { LandingPageHeader } from '../landing-page-header/landing-page-header';
   styleUrl: './landing-page-feature-host.scss',
 })
 export class LandingPageFeatureHost {
-  user = signal<{ name: string } | null>({ name: 'Praveen' });
+  user = signal<{ name: string } | null>(null);
+
+  private readonly router = inject(Router);
 
   features = signal([
     {
@@ -32,6 +35,6 @@ export class LandingPageFeatureHost {
   ]);
 
   login() {
-    this.user.set({ name: 'Praveen' });
+    this.router.navigate(["test"])
   }
 }
