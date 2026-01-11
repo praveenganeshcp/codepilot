@@ -16,8 +16,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "fastdraft.helloWorld",
-        "title": "Hello World"
+        "command": "fastdraft.webview",
+        "title": "FastDraft"
       }
     ]
   },
