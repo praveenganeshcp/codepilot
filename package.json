@@ -9,8 +9,7 @@
   "categories": [
     "Other"
   ],
-  "repository": {
-  },
+  "repository": {},
   "activationEvents": [],
   "main": "./out/extension.js",
   "contributes": {
@@ -31,14 +30,23 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.105.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "22.x",
+    "@types/vscode": "^1.105.0",
     "@typescript-eslint/eslint-plugin": "^8.39.0",
     "@typescript-eslint/parser": "^8.39.0",
-    "eslint": "^9.32.0",
-    "typescript": "^5.9.2",
     "@vscode/test-cli": "^0.0.11",
-    "@vscode/test-electron": "^2.5.2"
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.32.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "@langchain/core": "^1.1.15",
+    "@langchain/langgraph": "^1.1.0",
+    "@langchain/openai": "^1.2.2",
+    "deepagents": "^1.6.0",
+    "langchain": "^1.2.13",
+    "zod": "^4.3.5"
   }
 }
