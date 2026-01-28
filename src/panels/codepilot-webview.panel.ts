@@ -1,8 +1,8 @@
 import * as vscode from 'vscode';
 import { getUri } from '../utilities/get-uri';
 
-export class FastDraftWebViewPanel {
-  public static currentPanel: FastDraftWebViewPanel | undefined;
+export class CodePilotWebViewPanel {
+  public static currentPanel: CodePilotWebViewPanel | undefined;
   private readonly _panel: vscode.WebviewPanel;
   private _disposables: vscode.Disposable[] = [];
 
@@ -13,25 +13,25 @@ export class FastDraftWebViewPanel {
   }
 
   public static render(extensionUri: vscode.Uri) {
-    if (FastDraftWebViewPanel.currentPanel) {
-      FastDraftWebViewPanel.currentPanel._panel.reveal(vscode.ViewColumn.One);
+    if (CodePilotWebViewPanel.currentPanel) {
+      CodePilotWebViewPanel.currentPanel._panel.reveal(vscode.ViewColumn.One);
     } else {
       const panel = vscode.window.createWebviewPanel(
-        'fastDraft',
-        'FastDraft',
+        'codePilot',
+        'CodePilot',
         vscode.ViewColumn.One,
         {
           enableScripts: true,
-          localResourceRoots: [vscode.Uri.joinPath(extensionUri, 'fastdraft-ui/dist/fastdraft-ui/browser')],
+          localResourceRoots: [vscode.Uri.joinPath(extensionUri, 'codepilot-ui/dist/codepilot-ui/browser')],
           retainContextWhenHidden: true
         }
       );
-      FastDraftWebViewPanel.currentPanel = new FastDraftWebViewPanel(panel, extensionUri);
+      CodePilotWebViewPanel.currentPanel = new CodePilotWebViewPanel(panel, extensionUri);
     }
   }
 
   public dispose() {
-    FastDraftWebViewPanel.currentPanel = undefined;
+    CodePilotWebViewPanel.currentPanel = undefined;
     this._panel.dispose();
     while (this._disposables.length) {
       this._disposables.pop()?.dispose();
@@ -39,10 +39,10 @@ export class FastDraftWebViewPanel {
   }
 
   private _getWebviewContent(webview: vscode.Webview, extensionUri: vscode.Uri) {
-    const stylesUri = getUri(webview, extensionUri, ['fastdraft-ui/dist/fastdraft-ui/browser', 'styles.css']);
-    // const runtimeUri = getUri(webview, extensionUri, ['fastdraft-ui/dist/fastdraft-ui/browser', 'runtime.js']);
-    // const polyfillsUri = getUri(webview, extensionUri, ['fastdraft-ui/dist/fastdraft-ui/browser', 'polyfills.js']);
-    const mainUri = getUri(webview, extensionUri, ['fastdraft-ui/dist/fastdraft-ui/browser', 'main.js']);
+    const stylesUri = getUri(webview, extensionUri, ['codepilot-ui/dist/codepilot-ui/browser', 'styles.css']);
+    // const runtimeUri = getUri(webview, extensionUri, ['codepilot-ui/dist/codepilot-ui/browser', 'runtime.js']);
+    // const polyfillsUri = getUri(webview, extensionUri, ['codepilot-ui/dist/codepilot-ui/browser', 'polyfills.js']);
+    const mainUri = getUri(webview, extensionUri, ['codepilot-ui/dist/codepilot-ui/browser', 'main.js']);
     const cspSource = webview.cspSource;
 
     return `<!DOCTYPE html>
@@ -52,7 +52,7 @@ export class FastDraftWebViewPanel {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src ${cspSource} https:; script-src ${cspSource} 'unsafe-eval'; style-src ${cspSource} 'unsafe-inline';">
   <link rel="stylesheet" href="${stylesUri}">
-  <title>FastDraft</title>
+  <title>CodePilot</title>
 </head>
 <body>
   <app-root></app-root>

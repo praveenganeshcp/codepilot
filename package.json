@@ -1,6 +1,6 @@
 {
-  "name": "fastdraft",
-  "displayName": "FastDraft",
+  "name": "codepilot",
+  "displayName": "CodePilot",
   "description": "Turn specs to PRs in minutes",
   "version": "0.0.1",
   "engines": {
@@ -15,8 +15,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "fastdraft.webview",
-        "title": "FastDraft"
+        "command": "codepilot.webview",
+        "title": "CodePilot"
       }
     ]
   },
