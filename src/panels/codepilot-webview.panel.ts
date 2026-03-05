@@ -19,7 +19,7 @@ export class CodePilotWebViewPanel {
       const panel = vscode.window.createWebviewPanel(
         'codePilot',
         'CodePilot',
-        vscode.ViewColumn.One,
+        vscode.ViewColumn.Beside,
         {
           enableScripts: true,
           localResourceRoots: [vscode.Uri.joinPath(extensionUri, 'codepilot-ui/dist/codepilot-ui/browser')],
