@@ -27,7 +27,8 @@
     "watch": "tsc -watch -p ./",
     "pretest": "npm run compile && npm run lint",
     "lint": "eslint src",
-    "test": "vscode-test"
+    "test": "vscode-test",
+    "prettier": "prettier --write ."
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
@@ -47,6 +48,7 @@
     "@langchain/openai": "^1.2.2",
     "deepagents": "^1.6.0",
     "langchain": "^1.2.13",
+    "prettier": "^3.8.1",
     "zod": "^4.3.5"
   }
 }

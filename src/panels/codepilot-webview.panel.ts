@@ -1,5 +1,5 @@
-import * as vscode from 'vscode';
-import { getUri } from '../utilities/get-uri';
+import * as vscode from "vscode";
+import { getUri } from "../utilities/get-uri";
 
 export class CodePilotWebViewPanel {
   public static currentPanel: CodePilotWebViewPanel | undefined;
@@ -9,7 +9,10 @@ export class CodePilotWebViewPanel {
   private constructor(panel: vscode.WebviewPanel, extensionUri: vscode.Uri) {
     this._panel = panel;
     this._panel.onDidDispose(() => this.dispose(), null, this._disposables);
-    this._panel.webview.html = this._getWebviewContent(this._panel.webview, extensionUri);
+    this._panel.webview.html = this._getWebviewContent(
+      this._panel.webview,
+      extensionUri,
+    );
   }
 
   public static render(extensionUri: vscode.Uri) {
@@ -17,16 +20,24 @@ export class CodePilotWebViewPanel {
       CodePilotWebViewPanel.currentPanel._panel.reveal(vscode.ViewColumn.One);
     } else {
       const panel = vscode.window.createWebviewPanel(
-        'codePilot',
-        'CodePilot',
+        "codePilot",
+        "CodePilot",
         vscode.ViewColumn.Beside,
         {
           enableScripts: true,
-          localResourceRoots: [vscode.Uri.joinPath(extensionUri, 'codepilot-ui/dist/codepilot-ui/browser')],
-          retainContextWhenHidden: true
-        }
+          localResourceRoots: [
+            vscode.Uri.joinPath(
+              extensionUri,
+              "codepilot-ui/dist/codepilot-ui/browser",
+            ),
+          ],
+          retainContextWhenHidden: true,
+        },
       );
-      CodePilotWebViewPanel.currentPanel = new CodePilotWebViewPanel(panel, extensionUri);
+      CodePilotWebViewPanel.currentPanel = new CodePilotWebViewPanel(
+        panel,
+        extensionUri,
+      );
     }
   }
 
@@ -38,11 +49,20 @@ export class CodePilotWebViewPanel {
     }
   }
 
-  private _getWebviewContent(webview: vscode.Webview, extensionUri: vscode.Uri) {
-    const stylesUri = getUri(webview, extensionUri, ['codepilot-ui/dist/codepilot-ui/browser', 'styles.css']);
+  private _getWebviewContent(
+    webview: vscode.Webview,
+    extensionUri: vscode.Uri,
+  ) {
+    const stylesUri = getUri(webview, extensionUri, [
+      "codepilot-ui/dist/codepilot-ui/browser",
+      "styles.css",
+    ]);
     // const runtimeUri = getUri(webview, extensionUri, ['codepilot-ui/dist/codepilot-ui/browser', 'runtime.js']);
     // const polyfillsUri = getUri(webview, extensionUri, ['codepilot-ui/dist/codepilot-ui/browser', 'polyfills.js']);
-    const mainUri = getUri(webview, extensionUri, ['codepilot-ui/dist/codepilot-ui/browser', 'main.js']);
+    const mainUri = getUri(webview, extensionUri, [
+      "codepilot-ui/dist/codepilot-ui/browser",
+      "main.js",
+    ]);
     const cspSource = webview.cspSource;
 
     return `<!DOCTYPE html>
