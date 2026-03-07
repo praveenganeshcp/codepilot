@@ -6,16 +6,21 @@ export class CodePilotWebViewPanel {
   private readonly _panel: vscode.WebviewPanel;
   private _disposables: vscode.Disposable[] = [];
 
-  private constructor(panel: vscode.WebviewPanel, extensionUri: vscode.Uri) {
+  private constructor(
+    panel: vscode.WebviewPanel,
+    extensionUri: vscode.Uri,
+    isDebug: boolean,
+  ) {
     this._panel = panel;
     this._panel.onDidDispose(() => this.dispose(), null, this._disposables);
     this._panel.webview.html = this._getWebviewContent(
       this._panel.webview,
       extensionUri,
+      isDebug,
     );
   }
 
-  public static render(extensionUri: vscode.Uri) {
+  public static render(extensionUri: vscode.Uri, isDebug: boolean) {
     if (CodePilotWebViewPanel.currentPanel) {
       CodePilotWebViewPanel.currentPanel._panel.reveal(vscode.ViewColumn.One);
     } else {
@@ -37,6 +42,7 @@ export class CodePilotWebViewPanel {
       CodePilotWebViewPanel.currentPanel = new CodePilotWebViewPanel(
         panel,
         extensionUri,
+        isDebug
       );
     }
   }
@@ -52,18 +58,40 @@ export class CodePilotWebViewPanel {
   private _getWebviewContent(
     webview: vscode.Webview,
     extensionUri: vscode.Uri,
+    isDebug: boolean,
   ) {
+    const cspSource = webview.cspSource;
+
+    if (isDebug) {
+      const angularDevServerUrl = "http://localhost:4200";
+
+      return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; frame-src ${angularDevServerUrl}; img-src ${cspSource} https: data:; script-src ${cspSource}; style-src ${cspSource} 'unsafe-inline';">
+  <title>CodePilot (Debug)</title>
+</head>
+<body style="margin:0;padding:0;overflow:hidden;">
+  <iframe
+    id="codepilot-iframe"
+    src="${angularDevServerUrl}"
+    style="border:0;width:100vw;height:100vh;"
+    sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals allow-downloads"
+  ></iframe>
+</body>
+</html>`;
+    }
+
     const stylesUri = getUri(webview, extensionUri, [
       "codepilot-ui/dist/codepilot-ui/browser",
       "styles.css",
     ]);
-    // const runtimeUri = getUri(webview, extensionUri, ['codepilot-ui/dist/codepilot-ui/browser', 'runtime.js']);
-    // const polyfillsUri = getUri(webview, extensionUri, ['codepilot-ui/dist/codepilot-ui/browser', 'polyfills.js']);
     const mainUri = getUri(webview, extensionUri, [
       "codepilot-ui/dist/codepilot-ui/browser",
       "main.js",
     ]);
-    const cspSource = webview.cspSource;
 
     return `<!DOCTYPE html>
 <html lang="en">
